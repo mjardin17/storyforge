@@ -7,11 +7,13 @@ import { CouncilRoom } from './components/CouncilRoom';
 import { ManuscriptEditor } from './components/ManuscriptEditor';
 import { CharacterAndWorldLab } from './components/CharacterAndWorldLab';
 import { IllustrationStudio } from './components/IllustrationStudio';
+import { CartoonStudio } from './components/CartoonStudio';
 import { PublishingStudio } from './components/PublishingStudio';
 import { MarketingAndVideoFactory } from './components/MarketingAndVideoFactory';
 import { MerchStudio } from './components/MerchStudio';
 import { ScienceLabAnalytics } from './components/ScienceLabAnalytics';
 import { ExportPackageHub } from './components/ExportPackageHub';
+import { SophisticatedBookEngine } from './components/SophisticatedBookEngine';
 import { NewProjectModal } from './components/NewProjectModal';
 import { EmpireOSSystemStatusModal } from './components/EmpireOSSystemStatusModal';
 import { Plus, RefreshCw, BookOpen } from 'lucide-react';
@@ -33,7 +35,8 @@ export default function App() {
   });
 
   const [activeProjectId, setActiveProjectId] = useState<string>(() => projects[0]?.id || '');
-  const [activeTab, setActiveTab] = useState<string>('pipeline');
+  const [activeTab, setActiveTab] = useState<string>('cartoons');
+  const [selectedCartoonChapterId, setSelectedCartoonChapterId] = useState<string | undefined>();
   const [mode, setMode] = useState<'beginner' | 'professional'>('professional');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -113,19 +116,24 @@ export default function App() {
     });
   };
 
-  const handleAddChapter = () => {
+  const handleAddChapter = (custom?: Partial<Chapter>) => {
     if (!activeProject) return;
     const nextNum = (activeProject.manuscript.chapters?.length || 0) + 1;
     const newCh: Chapter = {
       id: `ch-${Date.now()}`,
-      chapterNumber: nextNum,
-      title: `Chapter ${nextNum}: New Horizon`,
-      synopsis: 'Outline chapter beats...',
-      content: 'Start writing your new chapter manuscript here...',
-      wordCount: 8,
-      readabilityScore: 85,
-      status: 'Draft',
-      illustrationBrief: {
+      chapterNumber: custom?.chapterNumber ?? nextNum,
+      title: custom?.title || `Chapter ${nextNum}: New Horizon`,
+      synopsis: custom?.synopsis || 'Outline chapter beats...',
+      content: custom?.content || 'Start writing your new chapter manuscript here...',
+      wordCount: custom?.wordCount || 8,
+      readabilityScore: custom?.readabilityScore || 85,
+      status: custom?.status || 'Draft',
+      povCharacter: custom?.povCharacter,
+      cliffhangerHook: custom?.cliffhangerHook,
+      tickingClockNote: custom?.tickingClockNote,
+      authorFormulaApplied: custom?.authorFormulaApplied,
+      pattersonCompliance: custom?.pattersonCompliance,
+      illustrationBrief: custom?.illustrationBrief || {
         sceneDescription: 'Scene illustration focus...',
         visualFocus: 'Key characters in dramatic action',
         midjourneyPrompt: 'Cinematic wide shot --ar 16:9',
@@ -139,6 +147,29 @@ export default function App() {
         chapters: [...activeProject.manuscript.chapters, newCh]
       }
     });
+  };
+
+  const handleUpdateProjectConfig = (updatedConfig: any) => {
+    if (!activeProject) return;
+    updateActiveProject({
+      authorMachineConfig: {
+        ...(activeProject.authorMachineConfig || {
+          selectedFormulaId: 'james-patterson',
+          enforcePattersonRules: true,
+          targetChapterWords: 850,
+          pacingDial: 95,
+          cliffhangerSeverity: 90,
+          fluffRemoverStrength: 85,
+          dualPovMode: true
+        }),
+        ...updatedConfig
+      }
+    });
+  };
+
+  const handleUpdateFormulaOutline = (outline: any[]) => {
+    if (!activeProject) return;
+    updateActiveProject({ formulaOutline: outline });
   };
 
   const handleGenerateChapterAI = async (chapterId: string) => {
@@ -265,7 +296,8 @@ export default function App() {
         videoPack: result.data?.videoPack || INITIAL_PROJECTS[0].videoPack,
         merchPack: result.data?.merchPack || INITIAL_PROJECTS[0].merchPack,
         analytics: INITIAL_PROJECTS[0].analytics,
-        councilDebate: INITIAL_PROJECTS[0].councilDebate
+        councilDebate: INITIAL_PROJECTS[0].councilDebate,
+        cartoonEpisodes: []
       };
 
       const updated = [newProj, ...projects];
@@ -346,6 +378,17 @@ export default function App() {
             />
           )}
 
+          {activeTab === 'bookmachine' && (
+            <SophisticatedBookEngine
+              project={activeProject}
+              onUpdateChapter={handleUpdateChapter}
+              onAddChapter={handleAddChapter}
+              onUpdateProjectConfig={handleUpdateProjectConfig}
+              onUpdateFormulaOutline={handleUpdateFormulaOutline}
+              onSwitchToManuscriptEditor={() => setActiveTab('manuscript')}
+            />
+          )}
+
           {activeTab === 'manuscript' && (
             <ManuscriptEditor
               project={activeProject}
@@ -353,6 +396,19 @@ export default function App() {
               onAddChapter={handleAddChapter}
               onGenerateChapterAI={handleGenerateChapterAI}
               isLoading={isLoading}
+              onOpenBookMachine={() => setActiveTab('bookmachine')}
+              onAnimateToCartoon={(chapterId) => {
+                setSelectedCartoonChapterId(chapterId);
+                setActiveTab('cartoons');
+              }}
+            />
+          )}
+
+          {activeTab === 'cartoons' && (
+            <CartoonStudio
+              project={activeProject}
+              onUpdateProject={updateActiveProject}
+              initialChapterId={selectedCartoonChapterId}
             />
           )}
 
@@ -383,6 +439,7 @@ export default function App() {
             <MarketingAndVideoFactory
               project={activeProject}
               onGenerateCampaign={() => handleRunDebate('Generate Omni-Channel Marketing Campaign')}
+              onNavigateToCartoons={() => setActiveTab('cartoons')}
             />
           )}
 

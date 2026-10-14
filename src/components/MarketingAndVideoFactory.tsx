@@ -8,13 +8,15 @@ import {
 interface MarketingAndVideoFactoryProps {
   project: PublishingProject;
   onGenerateCampaign: () => void;
+  onNavigateToCartoons?: () => void;
 }
 
 export const MarketingAndVideoFactory: React.FC<MarketingAndVideoFactoryProps> = ({
   project,
-  onGenerateCampaign
+  onGenerateCampaign,
+  onNavigateToCartoons
 }) => {
-  const [subTab, setSubTab] = useState<'marketing' | 'video'>('marketing');
+  const [subTab, setSubTab] = useState<'marketing' | 'video'>('video');
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const mkt = project.marketingPack;
@@ -125,6 +127,33 @@ export const MarketingAndVideoFactory: React.FC<MarketingAndVideoFactoryProps> =
 
       {subTab === 'video' && (
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-5">
+          {/* Cartoon Studio Quick Jump Banner */}
+          {onNavigateToCartoons && (
+            <div className="bg-gradient-to-r from-amber-500/15 via-indigo-600/15 to-purple-600/15 border border-amber-500/30 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-lg">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-bold text-lg shrink-0 shadow-md">
+                  🎬
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-amber-300">
+                    Full AI Cartoon Video Animation Studio Available!
+                  </h4>
+                  <p className="text-xs text-slate-300">
+                    Watch real-time animated cartoon videos with character speech, sound effects, and direct video recording (.webm).
+                  </p>
+                </div>
+              </div>
+
+              <button
+                onClick={onNavigateToCartoons}
+                className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs px-4 py-2 rounded-xl flex items-center gap-1.5 shrink-0 transition-all shadow-md"
+              >
+                <span>Launch Cartoon Studio</span>
+                <Film className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          )}
+
           <div className="border-b border-slate-800 pb-3">
             <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2">
               <Clapperboard className="w-4 h-4 text-amber-400" />

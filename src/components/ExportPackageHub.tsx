@@ -21,6 +21,7 @@ export const ExportPackageHub: React.FC<ExportPackageHubProps> = ({ project }) =
     { name: 'series_bible.json', label: 'Series Continuum & Timeline', size: '~10 KB' },
     { name: 'illustration_guide.json', label: 'Illustration Style & Multi-Prompts', size: '~15 KB' },
     { name: 'cover_brief.json', label: 'Book Cover Art Brief & Typography', size: '~8 KB' },
+    { name: 'cartoon_episodes.json', label: 'AI Cartoon Episodes & Animatic Timelines', size: '~32 KB' },
     { name: 'teacher_guide.json', label: 'Classroom & STEM Activity Guide', size: '~14 KB' },
     { name: 'activity_book.json', label: 'Coloring Pages & Puzzle Specs', size: '~11 KB' },
     { name: 'metadata.json', label: 'Amazon KDP & BISAC Metadata', size: '~6 KB' },
@@ -40,6 +41,7 @@ export const ExportPackageHub: React.FC<ExportPackageHubProps> = ({ project }) =
         rootFolder.file('world_bible.json', JSON.stringify(project.worldBible, null, 2));
         rootFolder.file('character_bible.json', JSON.stringify(project.characters, null, 2));
         rootFolder.file('illustration_guide.json', JSON.stringify(project.illustrationGuide, null, 2));
+        rootFolder.file('cartoon_episodes.json', JSON.stringify(project.cartoonEpisodes || [], null, 2));
         rootFolder.file('metadata.json', JSON.stringify(project.publishingMetadata, null, 2));
         rootFolder.file('marketing_brief.json', JSON.stringify(project.marketingPack, null, 2));
         rootFolder.file('video_pack.json', JSON.stringify(project.videoPack, null, 2));

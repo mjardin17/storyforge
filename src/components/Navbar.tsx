@@ -171,7 +171,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           {[
             { id: 'pipeline', label: '1. Pipeline Tracker', badge: `${activeProject?.currentStep || 1}/20` },
             { id: 'council', label: '2. Grand Council', badge: '9 Experts' },
+            { id: 'bookmachine', label: '🖋️ Patterson Book Machine', badge: 'Formula V1', isNew: true },
             { id: 'manuscript', label: '3. Book & Chapters', badge: `${activeProject?.manuscript?.chapters?.length || 0} Ch.` },
+            { id: 'cartoons', label: '🎬 AI Cartoon Videos', badge: `${activeProject?.cartoonEpisodes?.length || 0} Toons`, isNew: true },
             { id: 'characters', label: '4. Character & Lore Lab', badge: `${activeProject?.characters?.length || 0} Chars` },
             { id: 'illustration', label: '5. Illustration Studio', badge: 'Art Guides' },
             { id: 'publishing', label: '6. KDP & Publishing', badge: 'ISBN/EPUB' },
@@ -186,6 +188,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               className={`whitespace-nowrap px-3 py-1.5 rounded-md font-medium transition-all flex items-center gap-2 ${
                 activeTab === tab.id
                   ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30 shadow-sm'
+                  : tab.isNew
+                  ? 'text-amber-300 hover:text-amber-200 bg-amber-500/10 border border-amber-500/20'
                   : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900'
               }`}
             >
@@ -193,6 +197,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono ${
                 activeTab === tab.id
                   ? 'bg-amber-400/20 text-amber-300'
+                  : tab.isNew
+                  ? 'bg-amber-500/30 text-amber-200'
                   : 'bg-slate-800 text-slate-400'
               }`}>
                 {tab.badge}

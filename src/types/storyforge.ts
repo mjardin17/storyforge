@@ -119,6 +119,103 @@ export interface Chapter {
   };
   readabilityScore: number;
   status: 'Draft' | 'Council Review' | 'Polished' | 'Approved';
+  authorFormulaApplied?: string;
+  povCharacter?: string;
+  cliffhangerHook?: string;
+  tickingClockNote?: string;
+  pattersonCompliance?: PattersonComplianceReport;
+}
+
+export type AuthorFormulaId = 
+  | 'james-patterson'
+  | 'dan-brown'
+  | 'stephen-king'
+  | 'brandon-sanderson'
+  | 'agatha-christie'
+  | 'colleen-hoover'
+  | 'michael-crichton'
+  | 'lee-child'
+  | 'gillian-flynn'
+  | 'malcolm-gladwell'
+  | 'custom-clone';
+
+export interface AuthorFormulaProfile {
+  id: AuthorFormulaId | string;
+  authorName: string;
+  formulaTitle: string;
+  bestsellerCredentials: string;
+  pacingVelocity: 'relentless-hyper' | 'ticking-clock' | 'slow-burn-dread' | 'convergent-avalanche' | 'cerebral-methodical' | 'emotional-cyclone';
+  targetChapterWordCount: { min: number; max: number; typical: number };
+  cliffhangerMandate: boolean;
+  cliffhangerRuleDescription: string;
+  coreRules: Array<{ ruleNumber: number; title: string; mechanism: string; whyItWorks: string }>;
+  povStructure: string;
+  fluffTolerance: 'zero-tolerance' | 'spartan' | 'rich-atmospheric' | 'tactile-observant';
+  dialogueRatioPercent: number;
+  keyTechniques: string[];
+  sampleOpeningHook: string;
+  sampleEndingCliffhanger: string;
+  formulaColor: string;
+  avatar: string;
+}
+
+export interface PattersonComplianceReport {
+  overallScore: number; // 0-100
+  overallGrade: 'A+ (Patterson Masterpiece)' | 'A (NYT Page Turner)' | 'B (Good Suspense)' | 'C (Too Much Fluff)';
+  wordCountScore: {
+    count: number;
+    targetMin: number;
+    targetMax: number;
+    pass: boolean;
+    feedback: string;
+  };
+  cliffhangerAudit: {
+    detected: boolean;
+    intensity: number; // 0-100
+    cliffhangerSentence: string;
+    tensionLevel: 'Mild' | 'High' | 'Heart-Stopping';
+    feedback: string;
+  };
+  fluffDetection: {
+    fluffPercentage: number;
+    fillerSentencesFound: string[];
+    propulsionRating: number; // 0-100
+    verdict: string;
+  };
+  pacingVelocity: number; // 0-100
+  povIronyRating: number; // 0-100
+  pattersonRulesFollowed: string[];
+  recommendations: string[];
+}
+
+export interface FormulaOutlineBeat {
+  chapterNumber: number;
+  title: string;
+  pov: string;
+  tickingClock: string;
+  coreConflict: string;
+  cliffhangerBeat: string;
+  wordTarget: number;
+  status: 'planned' | 'drafted' | 'polished';
+}
+
+export interface AuthorVoiceConfig {
+  selectedFormulaId: AuthorFormulaId | string;
+  enforcePattersonRules: boolean;
+  targetChapterWords: number; // Default: 800 (Patterson style)
+  pacingDial: number; // 0-100 (Default: 95)
+  cliffhangerSeverity: number; // 0-100 (Default: 90)
+  fluffRemoverStrength: number; // 0-100 (Default: 85)
+  dualPovMode: boolean; // Protagonist vs Antagonist
+  customAuthorName?: string;
+  customSampleText?: string;
+  customVoiceFingerprint?: {
+    syntaxCadence: string;
+    vocabularyGrade: string;
+    dialogueStyle: string;
+    sensoryPalette: string[];
+    narrativePacing: string;
+  };
 }
 
 export interface BookManuscript {
@@ -220,6 +317,77 @@ export interface VideoNarrationPack {
   trailerScript: string;
 }
 
+export type CartoonStyle = 
+  | '2d-classic' 
+  | '3d-pixar' 
+  | 'anime-chibi' 
+  | 'studio-ghibli'
+  | 'sketch'
+  | 'claymation' 
+  | 'rubber-hose' 
+  | 'storybook-popup';
+
+export interface CartoonDialogue {
+  id: string;
+  speaker: string;
+  text: string;
+  emotion: 'excited' | 'puzzled' | 'brave' | 'mischievous' | 'whispering' | 'laughing';
+  voicePitch: number;
+  voiceRate: number;
+  startSec: number;
+  durationSec: number;
+}
+
+export interface CartoonSoundEffect {
+  id: string;
+  sfxType: 'boing' | 'magic-sparkle' | 'clockwork-whir' | 'whoosh' | 'pop' | 'fanfare' | 'ticking' | 'giggle-slide';
+  timestampSec: number;
+  label: string;
+}
+
+export interface CartoonCharacterMotion {
+  characterId: string;
+  characterName: string;
+  positionX: number; // 0 to 100%
+  positionY: number; // 0 to 100%
+  scale: number; // 0.5 to 2.0
+  action: 'talking' | 'waving' | 'jumping' | 'examining' | 'running' | 'idle' | 'floating';
+  faceExpression: 'happy' | 'surprised' | 'focused' | 'mischievous' | 'talking' | 'brave';
+}
+
+export interface CartoonScene {
+  id: string;
+  sceneNumber: number;
+  title: string;
+  duration: number; // in seconds
+  visualDescription: string;
+  cameraMotion: 'pan-right' | 'pan-left' | 'zoom-in' | 'zoom-out' | 'dramatic-shake' | 'tracking-shot' | 'static';
+  transition: 'iris-wipe' | 'star-wipe' | 'bounce-pop' | 'cross-dissolve' | 'slide-left';
+  backgroundTheme: 'workshop_vault' | 'clockwork_citadel' | 'backward_river' | 'celestial_observatory' | 'enchanted_forest' | 'steam_laboratory' | 'mystic_canyon' | 'sky_docks';
+  characters: CartoonCharacterMotion[];
+  dialogue: CartoonDialogue[];
+  soundEffects: CartoonSoundEffect[];
+  ambientParticles: 'sparkles' | 'floating_gears' | 'bubbles' | 'stars' | 'leaves' | 'none';
+  visualPrompt: string;
+  generatedFrameUrl?: string;
+}
+
+export interface CartoonEpisode {
+  id: string;
+  title: string;
+  chapterId?: string;
+  chapterTitle?: string;
+  animationStyle: CartoonStyle;
+  aspectRatio: '16:9' | '9:16' | '1:1';
+  totalDuration: number;
+  fps: number;
+  voiceNarrator: string;
+  bgmTrack: 'Upbeat Cartoon Bounce' | 'Whimsical Adventure' | 'Mystery Clockwork' | 'Playful Shenanigans' | 'Heroic Fanfare';
+  scenes: CartoonScene[];
+  generatedAt: string;
+  videoUrl?: string;
+}
+
 export interface MerchPack {
   tShirtPrompts: { title: string; designPrompt: string }[];
   mugPrompts: { title: string; designPrompt: string }[];
@@ -259,4 +427,8 @@ export interface PublishingProject {
   merchPack: MerchPack;
   analytics: AnalyticsSim;
   councilDebate: CouncilDebateEntry[];
+  cartoonEpisodes?: CartoonEpisode[];
+  authorMachineConfig?: AuthorVoiceConfig;
+  formulaOutline?: FormulaOutlineBeat[];
 }
+

@@ -11,6 +11,8 @@ interface ManuscriptEditorProps {
   onAddChapter: () => void;
   onGenerateChapterAI: (chapterId: string) => Promise<void>;
   isLoading: boolean;
+  onAnimateToCartoon?: (chapterId: string) => void;
+  onOpenBookMachine?: () => void;
 }
 
 export const ManuscriptEditor: React.FC<ManuscriptEditorProps> = ({
@@ -18,7 +20,9 @@ export const ManuscriptEditor: React.FC<ManuscriptEditorProps> = ({
   onUpdateChapter,
   onAddChapter,
   onGenerateChapterAI,
-  isLoading
+  isLoading,
+  onAnimateToCartoon,
+  onOpenBookMachine
 }) => {
   const chapters = project.manuscript.chapters || [];
   const [activeChapterId, setActiveChapterId] = useState<string>(chapters[0]?.id || '');
@@ -83,7 +87,29 @@ export const ManuscriptEditor: React.FC<ManuscriptEditorProps> = ({
         </div>
 
         {/* Quick Chapter Action Bar */}
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-2.5 shrink-0">
+          {onOpenBookMachine && (
+            <button
+              onClick={onOpenBookMachine}
+              className="bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/40 font-bold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 transition-all shadow-sm"
+              title="Open the James Patterson Formula & Author Mimicry Machine"
+            >
+              <span>⚡</span>
+              <span>Patterson Formula Machine</span>
+            </button>
+          )}
+
+          {onAnimateToCartoon && (
+            <button
+              onClick={() => onAnimateToCartoon(activeChapter.id)}
+              className="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 font-bold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 transition-all shadow-sm"
+              title="Create an animated AI cartoon video from this chapter"
+            >
+              <span>🎬</span>
+              <span>Animate to Cartoon</span>
+            </button>
+          )}
+
           <button
             onClick={() => onGenerateChapterAI(activeChapter.id)}
             disabled={isLoading}

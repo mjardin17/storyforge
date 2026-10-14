@@ -53,7 +53,47 @@ He pried open the oak floor. Beneath lay not stone foundations, but an intricate
             dallePrompt: 'Detailed storybook illustration of a young clockmaker boy discovering glowing brass gears hidden beneath workshop floorboards, warm lighting, fantasy style.'
           },
           readabilityScore: 84,
-          status: 'Approved'
+          status: 'Approved',
+          authorFormulaApplied: 'james-patterson',
+          povCharacter: 'Leo (Lead Horologist Apprentice)',
+          tickingClockNote: 'T-minus 3 hours before village clock strikes thirteen',
+          cliffhangerHook: 'At the center rested a sundial made of dark celestial metal, its shadow pointing not toward the sun, but toward Leo himself.',
+          pattersonCompliance: {
+            overallScore: 96,
+            overallGrade: 'A+ (Patterson Masterpiece)',
+            wordCountScore: {
+              count: 850,
+              targetMin: 600,
+              targetMax: 1100,
+              pass: true,
+              feedback: 'Complies with Patterson micro-chapter target (850 words). Rapid dopamine loop satisfied.'
+            },
+            cliffhangerAudit: {
+              detected: true,
+              intensity: 95,
+              cliffhangerSentence: 'At the center rested a sundial made of dark celestial metal, its shadow pointing not toward the sun, but toward Leo himself.',
+              tensionLevel: 'Heart-Stopping',
+              feedback: 'Perfect Zeigarnik cliffhanger ending mid-anomaly. Readers compelled to turn page.'
+            },
+            fluffDetection: {
+              fluffPercentage: 4,
+              fillerSentencesFound: [],
+              propulsionRating: 96,
+              verdict: 'Zero wallpaper fluff. Rapid action propulsion with high sensory immediacy.'
+            },
+            pacingVelocity: 95,
+            povIronyRating: 90,
+            pattersonRulesFollowed: [
+              'Rule 2: Micro-chapter under 1,000 words',
+              'Rule 3: Zeigarnik Cliffhanger Mandate',
+              'Rule 5: Ticking Clock Deadline',
+              'Rule 6: Zero Fluff Propulsion',
+              'Rule 7: In Media Res Sensory Opening'
+            ],
+            recommendations: [
+              'Alternate in Chapter 2 to the Antagonist perspective in the Clockwork Keep Spire.'
+            ]
+          }
         },
         {
           id: 'ch-2',
@@ -353,6 +393,467 @@ The stranger hopped down with a flair. "I am Kaelen Vance, late of the Royal Nav
         content: 'The Backward River visual is pure magic. It satisfies the core curiosity requirement for Middle Grade readers while stealthily introducing physics principles!',
         ratingScore: 96
       }
+    ],
+
+    cartoonEpisodes: [
+      {
+        id: 'ep-chrono-01',
+        title: 'Episode 1: The Broken Tick-Tock!',
+        chapterId: 'ch-1',
+        chapterTitle: 'Chapter 1: The Brass Gear in the Basement',
+        animationStyle: '2d-classic',
+        aspectRatio: '16:9',
+        totalDuration: 28,
+        fps: 24,
+        voiceNarrator: 'Pip the Toon Narrator',
+        bgmTrack: 'Upbeat Cartoon Bounce',
+        generatedAt: '2025-02-28T15:00:00Z',
+        scenes: [
+          {
+            id: 'sc-c1-1',
+            sceneNumber: 1,
+            title: 'The Ticking Workshop Mystery',
+            duration: 7,
+            visualDescription: 'Warm golden light streams through high windows into the dusty Victorian clockmaker workshop. Ticking grandfather clocks line the wooden walls as Leo examines vibrating floorboards.',
+            cameraMotion: 'zoom-in',
+            transition: 'iris-wipe',
+            backgroundTheme: 'workshop_vault',
+            ambientParticles: 'floating_gears',
+            visualPrompt: 'Cartoon illustration of a cozy Victorian clockmaker workshop filled with ticking grandfather clocks, glowing brass gears on the floor, colorful warm lighting, Saturday morning cartoon style.',
+            characters: [
+              {
+                characterId: 'char-1',
+                characterName: 'Leo',
+                positionX: 38,
+                positionY: 66,
+                scale: 1.0,
+                action: 'examining',
+                faceExpression: 'focused'
+              }
+            ],
+            dialogue: [
+              {
+                id: 'd-c1-1',
+                speaker: 'Leo',
+                text: 'Wait a second... grandfather clocks don\'t skip beats like that! Look at that floorboard humming!',
+                emotion: 'excited',
+                voicePitch: 1.25,
+                voiceRate: 1.1,
+                startSec: 0.8,
+                durationSec: 5.2
+              }
+            ],
+            soundEffects: [
+              { id: 'sfx-c1-1', sfxType: 'ticking', timestampSec: 0.4, label: 'Double Heartbeat Tick' },
+              { id: 'sfx-c1-2', sfxType: 'boing', timestampSec: 3.2, label: 'Spring Floor Pop' }
+            ]
+          },
+          {
+            id: 'sc-c1-2',
+            sceneNumber: 2,
+            title: 'The Subterranean Sundial Awakens',
+            duration: 7,
+            visualDescription: 'The oak floorboards bounce open with a cartoon pop! Giant brass gear-rings rotate outward with luminous golden beams as a portal opens.',
+            cameraMotion: 'dramatic-shake',
+            transition: 'bounce-pop',
+            backgroundTheme: 'clockwork_citadel',
+            ambientParticles: 'sparkles',
+            visualPrompt: 'Cartoon action scene, underground floor opening to reveal a glowing brass sundial with purple-gold energy vortex, bouncing expressive cartoon style.',
+            characters: [
+              {
+                characterId: 'char-1',
+                characterName: 'Leo',
+                positionX: 25,
+                positionY: 66,
+                scale: 1.0,
+                action: 'jumping',
+                faceExpression: 'surprised'
+              },
+              {
+                characterId: 'char-2',
+                characterName: 'Kael',
+                positionX: 70,
+                positionY: 62,
+                scale: 1.05,
+                action: 'waving',
+                faceExpression: 'happy'
+              }
+            ],
+            dialogue: [
+              {
+                id: 'd-c1-2',
+                speaker: 'Kael',
+                text: 'Ahoy there, mate! Mind if I borrow a cup of sugar from the eighteenth century?',
+                emotion: 'laughing',
+                voicePitch: 1.05,
+                voiceRate: 1.15,
+                startSec: 1.0,
+                durationSec: 4.8
+              }
+            ],
+            soundEffects: [
+              { id: 'sfx-c1-3', sfxType: 'clockwork-whir', timestampSec: 0.6, label: 'Gear Accelerator Spin' },
+              { id: 'sfx-c1-4', sfxType: 'magic-sparkle', timestampSec: 2.8, label: 'Temporal Chime' }
+            ]
+          },
+          {
+            id: 'sc-c1-3',
+            sceneNumber: 3,
+            title: 'The Backward River Wonder',
+            duration: 7,
+            visualDescription: 'Vibrant purple and turquoise landscape where sparkling water flows backward up a mountain toward a floating clockwork citadel.',
+            cameraMotion: 'pan-right',
+            transition: 'star-wipe',
+            backgroundTheme: 'backward_river',
+            ambientParticles: 'bubbles',
+            visualPrompt: 'Lush cartoon fantasy panorama with a luminous river flowing uphill against gravity, floating castle towers, bright sunny animated palette.',
+            characters: [
+              {
+                characterId: 'char-1',
+                characterName: 'Leo',
+                positionX: 38,
+                positionY: 66,
+                scale: 1.0,
+                action: 'talking',
+                faceExpression: 'surprised'
+              },
+              {
+                characterId: 'char-2',
+                characterName: 'Kael',
+                positionX: 68,
+                positionY: 66,
+                scale: 1.0,
+                action: 'talking',
+                faceExpression: 'mischievous'
+              }
+            ],
+            dialogue: [
+              {
+                id: 'd-c1-3',
+                speaker: 'Leo',
+                text: 'The river... it is defying Newton\'s laws! The water is climbing Mount Aethelgard!',
+                emotion: 'puzzled',
+                voicePitch: 1.25,
+                voiceRate: 1.05,
+                startSec: 0.8,
+                durationSec: 5.2
+              }
+            ],
+            soundEffects: [
+              { id: 'sfx-c1-5', sfxType: 'whoosh', timestampSec: 1.0, label: 'Upward River Surge' },
+              { id: 'sfx-c1-6', sfxType: 'giggle-slide', timestampSec: 4.2, label: 'Playful Whistle' }
+            ]
+          },
+          {
+            id: 'sc-c1-4',
+            sceneNumber: 4,
+            title: 'Team-Up Into The Chrono-Rift',
+            duration: 7,
+            visualDescription: 'Both cartoon heroes strike a heroic high-five pose as glowing clockwork wings unfold and they leap into the adventure.',
+            cameraMotion: 'zoom-out',
+            transition: 'cross-dissolve',
+            backgroundTheme: 'sky_docks',
+            ambientParticles: 'sparkles',
+            visualPrompt: 'Cartoon climax scene, two animated friends high fiving with heroic grins, brass compass shining, fireworks and fanfare atmosphere.',
+            characters: [
+              {
+                characterId: 'char-1',
+                characterName: 'Leo',
+                positionX: 42,
+                positionY: 66,
+                scale: 1.1,
+                action: 'jumping',
+                faceExpression: 'happy'
+              },
+              {
+                characterId: 'char-2',
+                characterName: 'Kael',
+                positionX: 58,
+                positionY: 66,
+                scale: 1.1,
+                action: 'jumping',
+                faceExpression: 'happy'
+              }
+            ],
+            dialogue: [
+              {
+                id: 'd-c1-4',
+                speaker: 'Kael',
+                text: 'Hold onto your loupe, inventor! We\'ve got a timeline to save!',
+                emotion: 'brave',
+                voicePitch: 1.1,
+                voiceRate: 1.2,
+                startSec: 0.9,
+                durationSec: 4.5
+              }
+            ],
+            soundEffects: [
+              { id: 'sfx-c1-7', sfxType: 'pop', timestampSec: 1.0, label: 'Heroic Clink' },
+              { id: 'sfx-c1-8', sfxType: 'fanfare', timestampSec: 3.5, label: 'Triumphant Brass Toon Fanfare' }
+            ]
+          }
+        ]
+      },
+      {
+        id: 'ep-chrono-02',
+        title: 'Episode 2: The Whispering Meadows of Aethelgard',
+        chapterId: 'ch-2',
+        chapterTitle: 'Chapter 2: The Boy with the Silver Compass',
+        animationStyle: 'studio-ghibli',
+        aspectRatio: '16:9',
+        totalDuration: 28,
+        fps: 24,
+        voiceNarrator: 'Master Miyazaki Narrator',
+        bgmTrack: 'Whimsical Adventure',
+        generatedAt: '2025-02-28T16:30:00Z',
+        scenes: [
+          {
+            id: 'sc-c2-1',
+            sceneNumber: 1,
+            title: 'Breeze Over Emerald Grass',
+            duration: 7,
+            visualDescription: 'Lush emerald green watercolor meadows sway gently beneath massive, painted cumulus clouds. Nostalgic warm sunlight dapples Leo as dandelion fluff floats in the breeze.',
+            cameraMotion: 'pan-right',
+            transition: 'cross-dissolve',
+            backgroundTheme: 'enchanted_forest',
+            ambientParticles: 'sparkles',
+            visualPrompt: 'Studio Ghibli lush rolling green watercolor hills, giant fluffy white clouds, gentle breeze blowing grass, warm nostalgic sunlight, Hayao Miyazaki anime style.',
+            characters: [
+              {
+                characterId: 'char-1',
+                characterName: 'Leo',
+                positionX: 34,
+                positionY: 66,
+                scale: 1.0,
+                action: 'examining',
+                faceExpression: 'focused'
+              }
+            ],
+            dialogue: [
+              {
+                id: 'd-c2-1',
+                speaker: 'Leo',
+                text: 'Listen... the wind isn\'t just blowing. It is singing the same frequency as the brass gears!',
+                emotion: 'whispering',
+                voicePitch: 1.15,
+                voiceRate: 1.0,
+                startSec: 1.0,
+                durationSec: 4.8
+              }
+            ],
+            soundEffects: [
+              { id: 'sfx-c2-1', sfxType: 'whoosh', timestampSec: 0.5, label: 'Pastoral Meadow Breeze' },
+              { id: 'sfx-c2-2', sfxType: 'magic-sparkle', timestampSec: 3.2, label: 'Dandelion Shimmer' }
+            ]
+          },
+          {
+            id: 'sc-c2-2',
+            sceneNumber: 2,
+            title: 'Kael\'s Silver Compass Gleam',
+            duration: 7,
+            visualDescription: 'Kael stands atop a mossy boulder, his navy coat fluttering in the wind as his silver compass spins with luminous starlight needles.',
+            cameraMotion: 'zoom-in',
+            transition: 'cross-dissolve',
+            backgroundTheme: 'mystic_canyon',
+            ambientParticles: 'sparkles',
+            visualPrompt: 'Studio Ghibli adventure anime, handsome boy with silver compass atop a hill overlooking distant floating castle, painterly watercolor background.',
+            characters: [
+              {
+                characterId: 'char-2',
+                characterName: 'Kael',
+                positionX: 62,
+                positionY: 65,
+                scale: 1.05,
+                action: 'talking',
+                faceExpression: 'brave'
+              }
+            ],
+            dialogue: [
+              {
+                id: 'd-c2-2',
+                speaker: 'Kael',
+                text: 'The compass never lies, inventor. The Temporal River is right over that ridge!',
+                emotion: 'excited',
+                voicePitch: 1.1,
+                voiceRate: 1.1,
+                startSec: 1.2,
+                durationSec: 4.6
+              }
+            ],
+            soundEffects: [
+              { id: 'sfx-c2-3', sfxType: 'clockwork-whir', timestampSec: 1.0, label: 'Silver Needle Spin' },
+              { id: 'sfx-c2-4', sfxType: 'fanfare', timestampSec: 3.8, label: 'Meadow Horn Call' }
+            ]
+          },
+          {
+            id: 'sc-c2-3',
+            sceneNumber: 3,
+            title: 'The Gravity-Defying Brook',
+            duration: 7,
+            visualDescription: 'A sparkling crystal brook splits into droplets that float upward like glowing blue lanterns against the watercolor sky.',
+            cameraMotion: 'tracking-shot',
+            transition: 'cross-dissolve',
+            backgroundTheme: 'backward_river',
+            ambientParticles: 'bubbles',
+            visualPrompt: 'Water droplets defying gravity in a lush forest, Studio Ghibli magical nature scene, soft hand-painted gouache colors, whimsical.',
+            characters: [
+              {
+                characterId: 'char-1',
+                characterName: 'Leo',
+                positionX: 38,
+                positionY: 66,
+                scale: 1.0,
+                action: 'jumping',
+                faceExpression: 'surprised'
+              },
+              {
+                characterId: 'char-2',
+                characterName: 'Kael',
+                positionX: 65,
+                positionY: 66,
+                scale: 1.0,
+                action: 'talking',
+                faceExpression: 'happy'
+              }
+            ],
+            dialogue: [
+              {
+                id: 'd-c2-3',
+                speaker: 'Leo',
+                text: 'Incredible! The water particles have reversed polarity! Touch one, Kael!',
+                emotion: 'excited',
+                voicePitch: 1.25,
+                voiceRate: 1.15,
+                startSec: 0.8,
+                durationSec: 5.0
+              }
+            ],
+            soundEffects: [
+              { id: 'sfx-c2-5', sfxType: 'pop', timestampSec: 1.5, label: 'Water Droplet Bubble Pop' },
+              { id: 'sfx-c2-6', sfxType: 'magic-sparkle', timestampSec: 3.5, label: 'Bioluminescent Bloom' }
+            ]
+          },
+          {
+            id: 'sc-c2-4',
+            sceneNumber: 4,
+            title: 'Gaze Toward The Floating Citadel',
+            duration: 7,
+            visualDescription: 'Both boys look out across the valley toward the majestic Floating Clockwork Citadel basking in the golden evening sunset.',
+            cameraMotion: 'zoom-out',
+            transition: 'cross-dissolve',
+            backgroundTheme: 'sky_docks',
+            ambientParticles: 'sparkles',
+            visualPrompt: 'Majestic anime sunset landscape with two young adventurers gazing at a distant floating clockwork castle, Studio Ghibli cinematic masterpiece.',
+            characters: [
+              {
+                characterId: 'char-1',
+                characterName: 'Leo',
+                positionX: 42,
+                positionY: 66,
+                scale: 1.05,
+                action: 'waving',
+                faceExpression: 'happy'
+              },
+              {
+                characterId: 'char-2',
+                characterName: 'Kael',
+                positionX: 58,
+                positionY: 66,
+                scale: 1.05,
+                action: 'waving',
+                faceExpression: 'brave'
+              }
+            ],
+            dialogue: [
+              {
+                id: 'd-c2-4',
+                speaker: 'Kael',
+                text: 'There she is. The Citadel of Aethelgard. Our greatest voyage begins now!',
+                emotion: 'brave',
+                voicePitch: 1.1,
+                voiceRate: 1.05,
+                startSec: 0.9,
+                durationSec: 4.8
+              }
+            ],
+            soundEffects: [
+              { id: 'sfx-c2-7', sfxType: 'fanfare', timestampSec: 2.5, label: 'Sunset Symphonic Brass' }
+            ]
+          }
+        ]
+      }
+    ],
+    authorMachineConfig: {
+      selectedFormulaId: 'james-patterson',
+      enforcePattersonRules: true,
+      targetChapterWords: 850,
+      pacingDial: 95,
+      cliffhangerSeverity: 92,
+      fluffRemoverStrength: 85,
+      dualPovMode: true
+    },
+    formulaOutline: [
+      {
+        chapterNumber: 1,
+        title: 'The Brass Gear in the Basement',
+        pov: 'Leo (Lead Horologist Apprentice)',
+        tickingClock: 'T-minus 3 hours before village clock strikes thirteen',
+        coreConflict: 'Leo discovers the glowing chronometer humming beneath the forbidden workshop floorboards.',
+        cliffhangerBeat: 'The shadow of the dark celestial sundial points directly toward Leo himself.',
+        wordTarget: 850,
+        status: 'drafted'
+      },
+      {
+        chapterNumber: 2,
+        title: 'The Backward River',
+        pov: 'Leo & Kaelen (Dual Perspective)',
+        tickingClock: 'T-minus 2 hours 40 minutes',
+        coreConflict: 'Leo slips through the temporal rift and encounters the swaggering 18th-century rogue Kael.',
+        cliffhangerBeat: 'A deafening steam siren blares from the floating Citadel as black skyships deploy.',
+        wordTarget: 850,
+        status: 'drafted'
+      },
+      {
+        chapterNumber: 3,
+        title: 'The Shadow Horologist Strikes',
+        pov: 'The Shadow Nemesis (Antagonist POV)',
+        tickingClock: 'T-minus 2 hours 15 minutes',
+        coreConflict: 'The villain observes the boys stepping into the Clockwork Keep ambush from the spires.',
+        cliffhangerBeat: 'The sniper lines up the reticle: "Right on time, little apprentice."',
+        wordTarget: 850,
+        status: 'planned'
+      },
+      {
+        chapterNumber: 4,
+        title: 'The Glass Alibi',
+        pov: 'Leo (Protagonist)',
+        tickingClock: 'T-minus 1 hour 50 minutes',
+        coreConflict: 'Leo and Kael must forge an alibi inside the temporal archives before the guards seal the gates.',
+        cliffhangerBeat: 'The glass floor beneath their boots fractures into thousands of ticking shards.',
+        wordTarget: 850,
+        status: 'planned'
+      },
+      {
+        chapterNumber: 5,
+        title: 'Three Seconds Too Late',
+        pov: 'Kael (Deuteragonist)',
+        tickingClock: 'T-minus 1 hour 20 minutes',
+        coreConflict: 'A runaway gear train threatens to crush the village below unless Kael cuts the main tension cable.',
+        cliffhangerBeat: 'Kael swings down with his dagger, but the cable snaps backward into the dark.',
+        wordTarget: 850,
+        status: 'planned'
+      },
+      {
+        chapterNumber: 6,
+        title: 'The Midpoint Trap',
+        pov: 'Leo & The Shadow (Dual POV)',
+        tickingClock: 'T-minus 45 minutes',
+        coreConflict: 'Leo believes he has successfully bypassed the central lock—only to discover it was a false dawn decoy.',
+        cliffhangerBeat: 'The door closes behind them with heavy iron clanks: "Did you truly think you were the hunter?"',
+        wordTarget: 850,
+        status: 'planned'
+      }
     ]
   }
 ];
+
