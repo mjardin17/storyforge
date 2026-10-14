@@ -2,6 +2,9 @@ import express from 'express';
 import { createServer as createViteServer } from 'vite';
 import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
+import fs from 'fs';
+import path from 'path';
+import { execSync } from 'child_process';
 
 dotenv.config();
 
@@ -366,6 +369,39 @@ app.post('/api/publishing/export', async (req, res) => {
     });
   } catch (err: any) {
     return res.status(500).json({ error: err.message });
+  }
+});
+
+// Full Empire OS Project Source Code Zip Download
+app.get('/api/download-project-zip', (req, res) => {
+  try {
+    const zipPath = path.resolve(process.cwd(), 'empire-os-complete-project.zip');
+    
+    // Regenerate zip to ensure latest files are included
+    try {
+      execSync(
+        `python3 -c "import zipfile, os; zf = zipfile.ZipFile('empire-os-complete-project.zip', 'w', zipfile.ZIP_DEFLATED); [zf.write(os.path.join(r, f), os.path.relpath(os.path.join(r, f), '.')) for r, d, files in os.walk('.') if not any(x in r for x in ['node_modules', 'dist', '.git', '.cache']) for f in files if f != 'empire-os-complete-project.zip']; zf.close()"`,
+        { cwd: process.cwd() }
+      );
+      // Also copy to public directory
+      const publicZip = path.resolve(process.cwd(), 'public', 'empire-os-complete-project.zip');
+      if (fs.existsSync(zipPath)) {
+        fs.copyFileSync(zipPath, publicZip);
+      }
+    } catch (e) {
+      console.warn('Zip recreation notice:', e);
+    }
+
+    if (fs.existsSync(zipPath)) {
+      res.setHeader('Content-Type', 'application/zip');
+      res.setHeader('Content-Disposition', 'attachment; filename="empire-os-complete-project.zip"');
+      return res.download(zipPath, 'empire-os-complete-project.zip');
+    } else {
+      return res.status(404).json({ error: 'Archive could not be located' });
+    }
+  } catch (err: any) {
+    console.error('Error in /api/download-project-zip:', err);
+    return res.status(500).json({ error: err.message || 'Failed to download zip' });
   }
 });
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { PublishingProject } from '../types/storyforge';
 import { 
   BookOpen, Plus, Download, Sparkles, Cpu, Search, 
-  Layers, CheckCircle, ShieldCheck, ChevronDown, Sliders, Info
+  Layers, CheckCircle, ShieldCheck, ChevronDown, Sliders, Info, FileArchive
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -152,6 +152,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Download className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Export Package</span>
             </button>
+
+            {/* Download Project Source Code ZIP */}
+            <a
+              href="/api/download-project-zip"
+              download="empire-os-complete-project.zip"
+              className="bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-sky-300 text-xs font-semibold px-3 py-2 rounded-lg border border-slate-800 hover:border-slate-700 flex items-center gap-1.5 transition-all shadow-sm"
+              title="Download entire codebase as a .ZIP file"
+            >
+              <FileArchive className="w-3.5 h-3.5 text-sky-400" />
+              <span className="hidden md:inline">Project .ZIP</span>
+            </a>
           </div>
         </div>
 

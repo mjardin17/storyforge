@@ -3,7 +3,7 @@ import { PublishingProject } from '../types/storyforge';
 import JSZip from 'jszip';
 import { 
   Download, FileJson, Layers, CheckCircle2, 
-  Sparkles, ShieldCheck, Copy, Check 
+  Sparkles, ShieldCheck, Copy, Check, FileArchive, Code, Terminal
 } from 'lucide-react';
 
 interface ExportPackageHubProps {
@@ -72,7 +72,57 @@ export const ExportPackageHub: React.FC<ExportPackageHubProps> = ({ project }) =
   return (
     <div className="space-y-6">
       
-      {/* Header */}
+      {/* Full Repository Codebase ZIP Card */}
+      <div className="bg-gradient-to-r from-slate-900 via-slate-900 to-indigo-950/40 border border-sky-500/30 rounded-2xl p-6 relative overflow-hidden shadow-xl">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-mono text-sky-400 bg-sky-500/10 border border-sky-500/20 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 font-semibold">
+                <FileArchive className="w-3.5 h-3.5 text-sky-400" />
+                Entire Project Codebase
+              </span>
+              <span className="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+                Ready to Download (.ZIP)
+              </span>
+            </div>
+            <h2 className="text-xl font-bold text-slate-100 flex items-center gap-2">
+              Download Complete Empire OS Repository (.ZIP)
+            </h2>
+            <p className="text-xs text-slate-400 max-w-2xl">
+              Includes the complete frontend & backend application: all React components, StoryForge modules, 9-expert Literary Council engine, Express server, TypeScript models, configuration, seed datasets, and local run instructions.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3 shrink-0">
+            <a
+              href="/api/download-project-zip"
+              download="empire-os-complete-project.zip"
+              className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs px-5 py-3 rounded-xl shadow-lg shadow-sky-500/20 flex items-center gap-2 transition-all active:scale-95"
+            >
+              <Download className="w-4 h-4" />
+              Download Full Project (.ZIP)
+            </a>
+          </div>
+        </div>
+
+        {/* Quick Instructions bar */}
+        <div className="mt-4 pt-4 border-t border-slate-800/80 flex flex-wrap items-center gap-4 text-xs font-mono text-slate-400">
+          <span className="flex items-center gap-1.5 text-slate-300">
+            <Terminal className="w-3.5 h-3.5 text-amber-400" /> Run locally:
+          </span>
+          <code className="bg-slate-950 px-2.5 py-1 rounded border border-slate-800 text-sky-300">
+            unzip empire-os-complete-project.zip
+          </code>
+          <code className="bg-slate-950 px-2.5 py-1 rounded border border-slate-800 text-amber-300">
+            npm install
+          </code>
+          <code className="bg-slate-950 px-2.5 py-1 rounded border border-slate-800 text-emerald-300">
+            npm run dev
+          </code>
+        </div>
+      </div>
+
+      {/* Header for Story Data Package */}
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 relative overflow-hidden">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div>
@@ -86,7 +136,7 @@ export const ExportPackageHub: React.FC<ExportPackageHubProps> = ({ project }) =
               11-File Master JSON Story Package Export
             </h2>
             <p className="text-xs text-slate-400 mt-1 max-w-2xl">
-              Export the entire project into standardized JSON structures compatible with Empire OS, Jardin's Outpost, and external AI agents.
+              Export the active story project into standardized JSON structures compatible with Empire OS, Jardin's Outpost, and external AI agents.
             </p>
           </div>
 
@@ -105,7 +155,7 @@ export const ExportPackageHub: React.FC<ExportPackageHubProps> = ({ project }) =
               className="bg-gradient-to-r from-amber-500 via-amber-600 to-indigo-600 hover:from-amber-400 text-slate-950 font-bold text-xs px-5 py-2.5 rounded-xl shadow-lg shadow-amber-500/10 flex items-center gap-2 transition-all"
             >
               <Download className="w-4 h-4" />
-              {isZipping ? 'Zipping Package...' : 'Download Complete ZIP Bundle'}
+              {isZipping ? 'Zipping Package...' : 'Download Story ZIP Bundle'}
             </button>
           </div>
         </div>
